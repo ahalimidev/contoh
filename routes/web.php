@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => 'firewall.all'], function () {
+Route::group(['middleware' => ['firewall.all','request_logger']], function () {
     Route::get('/', function () {
         return view('welcome');
     });
