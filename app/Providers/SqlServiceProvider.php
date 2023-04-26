@@ -37,15 +37,13 @@ class SqlServiceProvider extends ServiceProvider
                 return $value;
             }, $query->sql);
 
-            $x = [
-                $query->connection->getDatabaseName(),
-                self::formatDuration($query->time),
-                $sql,
-                request()->method(),
-                request()->getRequestUri(),
-                request()->getClientIp(),
-            ];
-            Log::info($x);
+            $log['name'] = "";
+            $log['sql'] = $sql;
+            $log['time'] = self::formatDuration($query->time);
+            $log['method'] = request()->method();
+            $log['url'] = request()->getRequestUri();
+            $log['ip'] = request()->getClientIp();
+            Log::info($log);
 
         });
     }
