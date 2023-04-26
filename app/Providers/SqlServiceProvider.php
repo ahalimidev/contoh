@@ -43,6 +43,7 @@ class SqlServiceProvider extends ServiceProvider
             $log['method'] = request()->method();
             $log['url'] = request()->getRequestUri();
             $log['ip'] = request()->getClientIp();
+            $log['tanggal'] = date('Y-m-d H:i:s');
             Log::info($log);
 
         });
